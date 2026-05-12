@@ -7,123 +7,211 @@
   <title>XP Games Store</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- TOPO -->
-  <div class="topo">
+  <!-- FUNDO -->
+  <div class="bg"></div>
+
+  <!-- HEADER -->
+  <header class="header">
 
     <div class="logo">
       🎮 XP Games
     </div>
 
-    <div class="menu">
-      <a href="">Início</a>
-      <a href="">Jogos</a>
-      <a href="">Promoções</a>
-      <a href="">Contato</a>
+    <nav class="menu">
+      <a href="#">Início</a>
+      <a href="#">Jogos</a>
+      <a href="#">Lançamentos</a>
+      <a href="#">Promoções</a>
+      <a href="#">Contato</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <span class="badge">
+        🔥 Plataforma Gamer Premium
+      </span>
+
+      <h1>
+        O universo gamer<br>
+        com estilo Windows XP
+      </h1>
+
+      <p>
+        Visual nostálgico, interface moderna e os melhores jogos
+        para PC, Playstation e Xbox.
+      </p>
+
+      <div class="buttons">
+
+        <button class="btn-primary">
+          Explorar Jogos
+        </button>
+
+        <button class="btn-secondary">
+          Ver Promoções
+        </button>
+
+      </div>
+
     </div>
 
-  </div>
+    <div class="hero-card">
 
-  <!-- BANNER -->
+      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop">
 
-  <div class="banner">
+    </div>
 
-    <h1>XP Games Store</h1>
+  </section>
+
+  <!-- TITULO -->
+
+  <section class="section-title">
+
+    <h2>
+      Jogos em Destaque
+    </h2>
 
     <p>
-      A loja gamer inspirada no visual clássico do Windows XP
+      Os títulos mais jogados da semana
     </p>
 
-    <button>
-      Ver Jogos
-    </button>
-
-  </div>
+  </section>
 
   <!-- PRODUTOS -->
 
-  <h1 class="titulo">
-    Jogos em Destaque
-  </h1>
+  <section class="products">
 
-  <div class="produtos">
-
-    <!-- CARD 1 -->
+    <!-- CARD -->
 
     <div class="card">
 
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
+      </div>
 
-      <div class="conteudo">
+      <div class="card-content">
 
-        <h2>Cyber Battle</h2>
+        <span class="tag">AÇÃO</span>
 
-        <div class="preco">
-          R$ 89,90
+        <h3>Cyber Battle</h3>
+
+        <p>
+          Batalhas futuristas em um universo cyberpunk.
+        </p>
+
+        <div class="card-bottom">
+
+          <div class="price">
+            R$ 89,90
+          </div>
+
+          <button>
+            Comprar
+          </button>
+
         </div>
-
-        <button>
-          Comprar
-        </button>
 
       </div>
 
     </div>
 
-    <!-- CARD 2 -->
+    <!-- CARD -->
 
     <div class="card">
 
-      <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop">
+      </div>
 
-      <div class="conteudo">
+      <div class="card-content">
 
-        <h2>Racing Legends</h2>
+        <span class="tag">CORRIDA</span>
 
-        <div class="preco">
-          R$ 59,90
+        <h3>Racing Legends</h3>
+
+        <p>
+          Velocidade extrema e gráficos de nova geração.
+        </p>
+
+        <div class="card-bottom">
+
+          <div class="price">
+            R$ 59,90
+          </div>
+
+          <button>
+            Comprar
+          </button>
+
         </div>
-
-        <button>
-          Comprar
-        </button>
 
       </div>
 
     </div>
 
-    <!-- CARD 3 -->
+    <!-- CARD -->
 
     <div class="card">
 
-      <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop">
+      </div>
 
-      <div class="conteudo">
+      <div class="card-content">
 
-        <h2>Pixel Warriors</h2>
+        <span class="tag">RPG</span>
 
-        <div class="preco">
-          R$ 39,90
+        <h3>Pixel Warriors</h3>
+
+        <p>
+          Explore mapas épicos e enfrente criaturas lendárias.
+        </p>
+
+        <div class="card-bottom">
+
+          <div class="price">
+            R$ 39,90
+          </div>
+
+          <button>
+            Comprar
+          </button>
+
         </div>
-
-        <button>
-          Comprar
-        </button>
 
       </div>
 
     </div>
 
-  </div>
+  </section>
 
-  <!-- RODAPÉ -->
+  <!-- FOOTER -->
 
-  <div class="rodape">
-    © 2026 XP Games Store - Todos os direitos reservados
-  </div>
+  <footer class="footer">
+
+    <h3>🎮 XP Games Store</h3>
+
+    <p>
+      © 2026 - Todos os direitos reservados
+    </p>
+
+  </footer>
 
 </body>
 </html>
