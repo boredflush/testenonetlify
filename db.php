@@ -1,9 +1,9 @@
 <?php
 
 $host = "sql12.freesqldatabase.com";
-$db   = "SEU_DATABASE";
-$user = "SEU_USUARIO";
-$pass = "SUA_SENHA";
+$db   = "sql10826582";
+$user = "sql10826582";
+$pass = "McS5X3rsQu";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
