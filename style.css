@@ -1,323 +1,117 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* Ocultar hacks de formulários lógicos */
+.css-hack-radio, .css-hack-checkbox {
+  display: none !important;
 }
 
-body{
-  font-family:'Poppins', sans-serif;
-  background:#02152e;
-  color:white;
-  overflow-x:hidden;
+/* Folha de estilos globais básicos */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+.header {
+  background: #0054E3;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+.logo { font-weight: bold; font-size: 20px; }
+.menu { display: flex; gap: 10px; }
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+.nav-btn.active, .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-weight: bold;
+}
+.main-content { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; margin-bottom: 30px; }
+.section-title h2 { margin: 0; font-size: 28px; }
+.section-title p { margin: 5px 0 0 0; color: #666; }
+
+/* Grid de Produtos / Cards */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #e1e4e8;
+}
+.card-image img { width: 100%; height: 160px; object-fit: cover; }
+.card-content { padding: 15px; }
+.tag { background: #e3edff; color: #0054E3; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold; }
+.card-content h3 { margin: 10px 0; font-size: 16px; }
+.card-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+.price { font-weight: bold; font-size: 16px; color: #2e7d32; }
+.buy-btn, .hero-click-btn {
+  background: #0054E3; color: white; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; text-decoration: none; display: inline-block;
 }
 
-/* FUNDO */
+/* Seção Hero Início */
+.hero { display: flex; align-items: center; gap: 40px; margin-bottom: 5px; background: white; padding: 40px; border-radius: 12px; border: 1px solid #e1e4e8; }
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 36px; margin: 15px 0; color: #111; line-height: 1.2; }
+.badge { background: #ffebee; color: #c62828; padding: 4px 10px; font-size: 12px; border-radius: 20px; font-weight: bold; }
+.hero-card img { width: 100%; max-width: 450px; border-radius: 8px; }
+.hero-click-btn.secondary { background: white; color: #333; border: 1px solid #ccc; margin-left: 10px; }
 
-.bg{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:
-  radial-gradient(circle at top, rgba(0,119,255,0.35), transparent 40%),
-  linear-gradient(to bottom, #0b4db8, #02152e);
-  z-index:-1;
+/* ==========================================
+   LÓGICA CSS DE FILTROS (DENTRO DE JOGOS)
+============================================ */
+.filter-buttons { display: flex; gap: 8px; margin-bottom: 25px; }
+.filter-btn { background: #FFF; border: 1px solid #7F9DB9; padding: 6px 14px; cursor: pointer; border-radius: 3px; font-size: 13px; }
+
+#filter-acao:checked ~ .catalog-grid .card:not(.item-acao),
+#filter-rpg:checked ~ .catalog-grid .card:not(.item-rpg),
+#filter-corrida:checked ~ .catalog-grid .card:not(.item-corrida) {
+  display: none;
+}
+#filter-todos:checked ~ .filter-buttons .btn-cat-todos,
+#filter-acao:checked ~ .filter-buttons .btn-cat-acao,
+#filter-rpg:checked ~ .filter-buttons .btn-cat-rpg,
+#filter-corrida:checked ~ .filter-buttons .btn-cat-corrida {
+  background: #0054E3; color: white; border-color: #0046D5;
 }
 
-/* HEADER */
-
-.header{
-  width:100%;
-  padding:25px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.25);
-  border-bottom:1px solid rgba(255,255,255,0.1);
-  z-index:100;
+/* ==========================================
+   ESTILO JANELA DO WINDOWS XP & MODAL
+============================================ */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6);
+  display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
 }
+#checkout-toggle:checked ~ .modal-overlay { opacity: 1; pointer-events: auto; }
+.xp-window { background: #ECE9D8; width: 450px; border: 3px solid #0054E3; border-radius: 5px 5px 0 0; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); font-family: 'Tahoma', sans-serif; }
+.xp-title-bar { background: linear-gradient(to bottom, #0058E6 0%, #3A82FF 8%, #0054E3 25%, #0046D5 65%, #002CD1 100%); padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: bold; font-size: 12px; }
+.xp-close-btn { background: linear-gradient(to bottom, #E76243 0%, #E9431C 30%, #CC2A04 70%, #9E1F02 100%); border: 1px solid #7B1300; color: white; font-weight: bold; width: 19px; height: 19px; border-radius: 3px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 10px; }
+.xp-window-body { padding: 15px; color: #000; }
+.wizard-header { background: white; margin: -15px -15px 0 -15px; padding: 12px 15px; border-bottom: 1px solid #B2B2B2; display: flex; justify-content: space-between; align-items: center; }
+.wizard-header h2 { font-size: 14px; margin: 0; }
+.wizard-header p { font-size: 11px; margin: 2px 0 0 0; color: #555; }
+.wizard-step-box { display: none; }
+#step-1:checked ~ .xp-window-body #box-step1, #step-2:checked ~ .xp-window-body #box-step2 { display: block; }
+.xp-divider { height: 2px; background: #D6D3CE; border-bottom: 1px solid #FFF; margin: 15px 0; }
+.xp-dialog-buttons { display: flex; justify-content: flex-end; gap: 6px; }
+.xp-btn { background: linear-gradient(to bottom, #FFF 0%, #F4F2E8 40%, #E3DFCE 70%, #D6D3CE 100%); border: 1px solid #7F9DB9; padding: 4px 14px; font-size: 12px; cursor: pointer; border-radius: 3px; color: black; }
+.xp-btn.primary { font-weight: bold; border-color: #0054E3; }
 
-.logo{
-  font-size:34px;
-  font-weight:700;
-}
-
-.menu{
-  display:flex;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-.menu a{
-  text-decoration:none;
-  color:white;
-  transition:0.3s;
-  font-weight:500;
-}
-
-.menu a:hover{
-  color:#69bfff;
-}
-
-/* HERO */
-
-.hero{
-  min-height:90vh;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:60px;
-  padding:60px 8%;
-}
-
-.hero-text{
-  max-width:650px;
-}
-
-.badge{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:40px;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  color:#7dc5ff;
-  margin-bottom:25px;
-}
-
-.hero-text h1{
-  font-size:70px;
-  line-height:1.1;
-  margin-bottom:25px;
-}
-
-.hero-text p{
-  color:#d4e2ff;
-  line-height:1.8;
-  margin-bottom:35px;
-  font-size:18px;
-}
-
-.buttons{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.btn-primary,
-.btn-secondary{
-  padding:16px 28px;
-  border:none;
-  border-radius:14px;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn-primary{
-  background:linear-gradient(to right, #1e90ff, #5ab3ff);
-  color:white;
-  box-shadow:0 10px 25px rgba(0,119,255,0.4);
-}
-
-.btn-primary:hover{
-  transform:translateY(-5px);
-}
-
-.btn-secondary{
-  background:transparent;
-  color:white;
-  border:1px solid rgba(255,255,255,0.2);
-}
-
-.btn-secondary:hover{
-  background:rgba(255,255,255,0.08);
-}
-
-/* HERO IMAGE */
-
-.hero-card{
-  width:500px;
-  border-radius:30px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 20px 45px rgba(0,0,0,0.5);
-}
-
-.hero-card img{
-  width:100%;
-  display:block;
-}
-
-/* TITULO */
-
-.section-title{
-  text-align:center;
-  margin-bottom:50px;
-  padding:0 20px;
-}
-
-.section-title h2{
-  font-size:50px;
-  margin-bottom:10px;
-}
-
-.section-title p{
-  color:#bfd4ff;
-}
-
-/* PRODUTOS */
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-  gap:35px;
-  padding:0 8% 100px;
-}
-
-.card{
-  background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:24px;
-  overflow:hidden;
-  backdrop-filter:blur(14px);
-  transition:0.4s;
-  position:relative;
-}
-
-.card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 25px 45px rgba(0,0,0,0.4);
-}
-
-.card-image{
-  overflow:hidden;
-}
-
-.card-image img{
-  width:100%;
-  height:230px;
-  object-fit:cover;
-  transition:0.5s;
-}
-
-.card:hover img{
-  transform:scale(1.08);
-}
-
-.card-content{
-  padding:25px;
-}
-
-.tag{
-  display:inline-block;
-  padding:7px 15px;
-  border-radius:30px;
-  background:linear-gradient(to right, #1e90ff, #5ab3ff);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-.card-content h3{
-  margin-top:18px;
-  font-size:28px;
-}
-
-.card-content p{
-  margin:15px 0 25px;
-  color:#dbe6ff;
-  line-height:1.7;
-}
-
-.card-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.price{
-  font-size:26px;
-  font-weight:700;
-  color:#7dc5ff;
-}
-
-.card-bottom button{
-  border:none;
-  padding:12px 20px;
-  border-radius:12px;
-  background:linear-gradient(to right, #1e90ff, #5ab3ff);
-  color:white;
-  cursor:pointer;
-  font-weight:600;
-  transition:0.3s;
-}
-
-.card-bottom button:hover{
-  transform:scale(1.05);
-}
-
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  padding:50px 20px;
-  background:rgba(0,0,0,0.2);
-  border-top:1px solid rgba(255,255,255,0.1);
-}
-
-.footer h3{
-  margin-bottom:10px;
-  font-size:30px;
-}
-
-.footer p{
-  color:#bfd4ff;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:1000px){
-
-  .hero{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .buttons{
-    justify-content:center;
-  }
-
-  .hero-card{
-    width:100%;
-    max-width:550px;
-  }
-
-  .hero-text h1{
-    font-size:50px;
-  }
-
-}
-
-@media(max-width:700px){
-
-  .header{
-    flex-direction:column;
-    gap:20px;
-  }
-
-  .menu{
-    justify-content:center;
-  }
-
-  .hero-text h1{
-    font-size:38px;
-  }
-
-  .section-title h2{
-    font-size:36px;
-  }
-
-}
+/* Contato */
+.contact-container { max-width: 500px; margin: 0 auto; }
+.xp-form-group { margin-bottom: 12px; }
+.xp-form-group label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 4px; }
+.xp-input, .xp-textarea { width: 100%; padding: 6px; border: 2px solid #7F9DB9; box-sizing: border-box; }
+.xp-textarea { height: 100px; resize: none; }
+.footer { text-align: center; padding: 30px; color: #666; font-size: 13px; }
