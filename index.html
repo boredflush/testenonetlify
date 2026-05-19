@@ -110,127 +110,268 @@
   </footer>
 
   <script>
-
-    const games = [
-
-      "Grand Theft Auto V",
-      "Minecraft",
-      "Elden Ring",
-      "Cyberpunk 2077",
-      "The Witcher 3",
-      "Red Dead Redemption 2",
-      "Resident Evil 4",
-      "EA Sports FC 26",
-      "Call of Duty",
-      "Fortnite",
-      "Valorant",
-      "Counter Strike 2",
-      "League of Legends",
-      "Dota 2",
-      "God of War Ragnarök",
-      "Spider-Man 2",
-      "The Last of Us",
-      "Forza Horizon 5",
-      "Need for Speed Heat",
-      "Halo Infinite",
-      "Battlefield 2042",
-      "Rainbow Six Siege",
-      "Assassin's Creed Mirage",
-      "Far Cry 6",
-      "Mortal Kombat 1",
-      "Tekken 8",
-      "Street Fighter 6",
-      "Dark Souls 3",
-      "Sekiro",
-      "Bloodborne",
-      "Hades",
-      "Celeste",
-      "Cuphead",
-      "Hollow Knight",
-      "Terraria",
-      "Roblox",
-      "Among Us",
-      "PUBG",
-      "Apex Legends",
-      "Dead by Daylight"
-
+    // Matriz contendo exatamente 200 jogos reais: [Nome, Gênero, ID da Steam para a Capa]
+    const gamesData = [
+      // RPG & Aventura Clássicos e Modernos
+      ["Grand Theft Auto V", "AÇÃO", 271590],
+      ["Cyberpunk 2077", "RPG", 1091500],
+      ["Elden Ring", "RPG", 1245620],
+      ["Red Dead Redemption 2", "AÇÃO", 1174180],
+      ["The Witcher 3: Wild Hunt", "RPG", 292030],
+      ["Baldur's Gate 3", "RPG", 1086940],
+      ["Hogwarts Legacy", "AVENTURA", 990080],
+      ["Starfield", "RPG", 1716740],
+      ["Resident Evil 4 Remake", "TERROR", 2050650],
+      ["Monster Hunter: World", "AÇÃO", 582010],
+      ["Terraria", "SANDBOX", 105600],
+      ["Stardew Valley", "SANDBOX", 413150],
+      ["Rust", "ONLINE", 252490],
+      ["Sea of Thieves", "AVENTURA", 1172620],
+      ["Forza Horizon 5", "CORRIDA", 1551360],
+      ["EA SPORTS FC 24", "ONLINE", 2195250],
+      ["Street Fighter 6", "AÇÃO", 1364780],
+      ["Mortal Kombat 1", "AÇÃO", 1971870],
+      ["Tekken 8", "AÇÃO", 1778820],
+      ["Doom Eternal", "FPS", 782330],
+      
+      // FPS e Shooters
+      ["Counter-Strike 2", "FPS", 730],
+      ["Apex Legends", "FPS", 1172470],
+      ["PUBG: BATTLEGROUNDS", "FPS", 578080],
+      ["Destiny 2", "FPS", 1085660],
+      ["Warframe", "AÇÃO", 230410],
+      ["Team Fortress 2", "FPS", 440],
+      ["Left 4 Dead 2", "FPS", 550],
+      ["DOOM (2016)", "FPS", 379430],
+      ["Wolfenstein: The New Order", "FPS", 65530],
+      ["Wolfenstein II: The New Colossus", "FPS", 612880],
+      ["Halo: The Master Chief Collection", "FPS", 976730],
+      ["Halo Infinite", "FPS", 1240440],
+      ["Battlefield V", "FPS", 1238810],
+      ["Battlefield 1", "FPS", 1238840],
+      ["Battlefield 2042", "FPS", 1517290],
+      ["Tom Clancy's Rainbow Six Siege", "FPS", 359550],
+      ["Tom Clancy's Ghost Recon Wildlands", "AÇÃO", 460930],
+      ["The Division 2", "AÇÃO", 2221490],
+      ["Far Cry 5", "AÇÃO", 552520],
+      ["Far Cry 6", "AÇÃO", 1874810],
+      
+      // Ação, Aventura e Mais FPS
+      ["Far Cry 4", "AÇÃO", 298110],
+      ["Borderlands 3", "FPS", 397540],
+      ["Borderlands 2", "FPS", 49520],
+      ["Tiny Tina's Wonderlands", "RPG", 1286680],
+      ["Payday 2", "AÇÃO", 218620],
+      ["Payday 3", "AÇÃO", 1272080],
+      ["Deep Rock Galactic", "FPS", 548430],
+      ["Warhammer 40,000: Darktide", "FPS", 1361210],
+      ["Helldivers 2", "AÇÃO", 553850],
+      ["Remnant: From the Ashes", "RPG", 617290],
+      ["Remnant 2", "RPG", 1282100],
+      ["Risk of Rain 2", "AÇÃO", 632360],
+      ["Roboquest", "FPS", 692890],
+      ["Gunfire Reborn", "FPS", 1178650],
+      ["Ready or Not", "FPS", 1144200],
+      ["Insurgency: Sandstorm", "FPS", 581320],
+      ["Squad", "FPS", 393380],
+      ["Hell Let Loose", "FPS", 686810],
+      ["Arma 3", "FPS", 107410],
+      
+      // Sobrevivência e Simulação
+      ["ARK: Survival Evolved", "SANDBOX", 346110],
+      ["ARK: Survival Ascended", "SANDBOX", 2378500],
+      ["Valheim", "SANDBOX", 892970],
+      ["Palworld", "SANDBOX", 1623730],
+      ["Enshrouded", "RPG", 1203620],
+      ["The Forest", "TERROR", 242760],
+      ["Sons of the Forest", "TERROR", 1326470],
+      ["Subnautica", "AVENTURA", 264710],
+      ["Subnautica: Below Zero", "AVENTURA", 848450],
+      ["Raft", "SANDBOX", 648800],
+      ["Green Hell", "TERROR", 815370],
+      ["7 Days to Die", "TERROR", 251570],
+      ["Project Zomboid", "RPG", 108600],
+      ["DayZ", "ONLINE", 221100],
+      ["Dead by Daylight", "TERROR", 381210],
+      ["Dying Light", "TERROR", 239140],
+      ["Dying Light 2 Stay Human", "TERROR", 534380],
+      ["Cities: Skylines", "SANDBOX", 255710],
+      ["Cities: Skylines II", "SANDBOX", 949230],
+      ["Euro Truck Simulator 2", "ONLINE", 227300],
+      ["American Truck Simulator", "ONLINE", 270880],
+      
+      // Simulação e Estratégia
+      ["Microsoft Flight Simulator", "AVENTURA", 1250410],
+      ["The Sims 4", "SANDBOX", 1222670],
+      ["RimWorld", "RPG", 294100],
+      ["Factorio", "SANDBOX", 427520],
+      ["Satisfactory", "SANDBOX", 526870],
+      ["Dyson Sphere Program", "SANDBOX", 1366540],
+      ["Sid Meier's Civilization VI", "RPG", 289070],
+      ["Crusader Kings III", "RPG", 1158310],
+      ["Hearts of Iron IV", "AÇÃO", 394360],
+      ["Stellaris", "RPG", 281990],
+      ["Europa Universalis IV", "RPG", 236850],
+      ["Total War: WARHAMMER III", "AÇÃO", 1142710],
+      ["Total War: THREE KINGDOMS", "AÇÃO", 779340],
+      ["Age of Empires II: Definitive Edition", "AÇÃO", 813780],
+      ["Age of Empires IV", "AÇÃO", 1466860],
+      ["XCOM 2", "RPG", 268500],
+      
+      // RPGs Independentes e Metroidvanias
+      ["Hades", "RPG", 1145360],
+      ["Hades II", "RPG", 1145350],
+      ["Hollow Knight", "AVENTURA", 367520],
+      ["Celeste", "AVENTURA", 504230],
+      ["Cuphead", "AÇÃO", 268910],
+      ["Dead Cells", "AÇÃO", 588650],
+      ["Vampire Survivors", "AÇÃO", 1794680],
+      ["The Binding of Isaac: Rebirth", "RPG", 250900],
+      ["Slay the Spire", "RPG", 646570],
+      ["Balatro", "RPG", 2379780],
+      ["Dave the Diver", "AVENTURA", 1868140],
+      ["Dredge", "TERROR", 1562430],
+      ["Cult of the Lamb", "RPG", 1313140],
+      ["Tunic", "AVENTURA", 553420],
+      ["Ori and the Blind Forest", "AVENTURA", 261570],
+      ["Ori and the Will of the Wisps", "AVENTURA", 1057090],
+      ["Undertale", "RPG", 391540],
+      ["Deltarune", "RPG", 1671210],
+      ["Omori", "RPG", 1150690],
+      ["Sea of Stars", "RPG", 1286580],
+      
+      // Esportes, Corrida e Luta
+      ["Forza Horizon 4", "CORRIDA", 1293830],
+      ["Need for Speed Heat", "CORRIDA", 1222680],
+      ["Need for Speed Unbound", "CORRIDA", 1846380],
+      ["Assetto Corsa", "CORRIDA", 244210],
+      ["Assetto Corsa Competizione", "CORRIDA", 805550],
+      ["F1 23", "CORRIDA", 2108330],
+      ["Dirt 5", "CORRIDA", 1185480],
+      ["Mortal Kombat 11", "AÇÃO", 976310],
+      ["Guilty Gear -Strive-", "AÇÃO", 1384160],
+      ["Dragon Ball FighterZ", "AÇÃO", 678950],
+      ["WWE 2K24", "ONLINE", 2315690],
+      ["NBA 2K24", "ONLINE", 2338770],
+      ["Tony Hawk's Pro Skater 1+2", "AÇÃO", 2395210],
+      ["Riders Republic", "CORRIDA", 1602080],
+      
+      // Terror, Cooperativos e Puzzles
+      ["Resident Evil Village", "TERROR", 1196590],
+      ["Resident Evil 7 Biohazard", "TERROR", 418370],
+      ["Resident Evil 2", "TERROR", 883710],
+      ["Resident Evil 3", "TERROR", 952060],
+      ["Dead Space", "TERROR", 1693980],
+      ["Alan Wake Remastered", "TERROR", 108710],
+      ["Phasmophobia", "TERROR", 739630],
+      ["Lethal Company", "TERROR", 1966720],
+      ["Among Us", "ONLINE", 945360],
+      ["It Takes Two", "AVENTURA", 1426210],
+      ["A Way Out", "AVENTURA", 1222700],
+      ["Overcooked! All You Can Eat", "ONLINE", 1243830],
+      ["Portal 2", "AVENTURA", 620],
+      ["Portal", "AVENTURA", 400],
+      ["The Talos Principle 2", "AVENTURA", 1607560],
+      ["The Witness", "AVENTURA", 210970],
+      ["Return of the Obra Dinn", "AVENTURA", 653530],
+      ["Baba Is You", "AVENTURA", 736260],
+      ["Limbo", "AVENTURA", 48000],
+      ["Inside", "AVENTURA", 304430],
+      
+      // Hits Finais / Clássicos variados para fechar 200 itens
+      ["Little Nightmares", "TERROR", 424840],
+      ["Little Nightmares II", "TERROR", 860510],
+      ["Shovel Knight: Treasure Trove", "AÇÃO", 250760],
+      ["Armored Core VI Fires of Rubicon", "AÇÃO", 1888160],
+      ["Wo Long: Fallen Dynasty", "RPG", 1448440],
+      ["Ghostrunner", "AÇÃO", 1139900],
+      ["Ghostrunner 2", "AÇÃO", 2144740],
+      ["Stray", "AVENTURA", 1332010],
+      ["Slime Rancher", "SANDBOX", 433340],
+      ["Slime Rancher 2", "SANDBOX", 1657630],
+      ["Untitled Goose Game", "AVENTURA", 1100600],
+      ["Goat Simulator", "SANDBOX", 265930],
+      ["Garry's Mod", "SANDBOX", 4000],
+      ["Left 4 Dead", "FPS", 500],
+      ["Half-Life: Alyx", "FPS", 546560],
+      ["Half-Life 2", "FPS", 220],
+      ["Black Mesa", "FPS", 362890],
+      ["BioShock Infinite", "FPS", 8870],
+      ["BioShock Remastered", "FPS", 409710],
+      ["The Elder Scrolls V: Skyrim", "RPG", 489830],
+      ["Fallout 4", "RPG", 377160],
+      ["Monster Hunter Rise", "AÇÃO", 1446780],
+      ["Horizon Zero Dawn", "RPG", 1151640],
+      ["God of War", "AÇÃO", 1593500],
+      ["Assassin's Creed Odyssey", "RPG", 812140],
+      ["Assassin's Creed Valhalla", "RPG", 2208920],
+      ["Assassin's Creed Origins", "RPG", 582160],
+      ["Persona 5 Royal", "RPG", 1687950],
+      ["Final Fantasy VII Remake Intergrade", "RPG", 1462040],
+      ["Final Fantasy XV", "RPG", 637650],
+      ["Dragon Age: Inquisition", "RPG", 1222690],
+      ["Mass Effect Legendary Edition", "RPG", 1328670],
+      ["Outer Wilds", "AVENTURA", 753640],
+      ["Disco Elysium", "RPG", 632470],
+      ["NieR:Automata", "RPG", 524220],
+      ["Yakuza: Like a Dragon", "RPG", 1235140],
+      ["Like a Dragon: Infinite Wealth", "RPG", 2072450],
+      ["Judgment", "AÇÃO", 2058180],
+      ["Sekiro: Shadows Die Twice", "AÇÃO", 814380],
+      ["Dark Souls III", "RPG", 379720],
+      ["Dark Souls Remastered", "RPG", 570940],
+      ["Lies of P", "RPG", 1627720],
+      ["Nioh 2", "RPG", 1325200],
+      ["Lords of the Fallen", "RPG", 1501750],
+      ["Star Wars Jedi: Fallen Order", "AÇÃO", 1172380],
+      ["Star Wars Jedi: Survivor", "AÇÃO", 1774580],
+      ["Death Stranding Director's Cut", "AVENTURA", 1850570],
+      ["Ghost of Tsushima Director's Cut", "AÇÃO", 2215430],
+      ["Marvel's Spider-Man Remastered", "AÇÃO", 1817070],
+      ["Marvel's Spider-Man: Miles Morales", "AÇÃO", 1817190]
     ];
 
-    for(let i = 1; i <= 170; i++){
-      games.push("XP Game " + i);
-    }
+    const productsContainer = document.getElementById("products");
 
-    const genres = [
-      "AÇÃO",
-      "RPG",
-      "FPS",
-      "AVENTURA",
-      "CORRIDA",
-      "TERROR",
-      "ONLINE",
-      "SANDBOX"
-    ];
+    // Lista de IDs conhecidos por serem Free-to-Play
+    const freeToPlayIds = [730, 1172470, 578080, 1085660, 230410, 440, 1222670];
 
-    const images = [
-
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
-
-      "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop",
-
-      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop",
-
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop",
-
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop"
-
-    ];
-
-    const products = document.getElementById("products");
-
-    games.forEach((game, index) => {
-
+    gamesData.forEach(([gameName, genre, steamId], index) => {
       const card = document.createElement("div");
-
       card.classList.add("card");
 
-      card.innerHTML = `
+      // URL Oficial da capa/banner da Steam para o ID do jogo
+      const imageUrl = `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`;
 
+      // Define preço realista baseado no ID ou gera um dinamicamente
+      const isFree = freeToPlayIds.includes(steamId);
+      const priceText = isFree ? "Gratuito" : `R$ ${(59 + (index * 7) % 160)},90`;
+
+      card.innerHTML = `
         <div class="card-image">
-          <img src="${images[index % images.length]}">
+          <img src="${imageUrl}" alt="${gameName}" loading="lazy">
         </div>
 
         <div class="card-content">
-
-          <span class="tag">
-            ${genres[index % genres.length]}
-          </span>
-
-          <h3>${game}</h3>
-
+          <span class="tag">${genre}</span>
+          <h3>${gameName}</h3>
           <p>
-            Um dos jogos mais populares da XP Games Store.
+            Um dos jogos mais populares e aclamados disponível na XP Games Store.
           </p>
 
           <div class="card-bottom">
-
             <div class="price">
-              R$ ${59 + index},90
+              ${priceText}
             </div>
-
             <button>
-              Comprar
+              ${isFree ? "Jogar" : "Comprar"}
             </button>
-
           </div>
-
         </div>
-
       `;
 
-      products.appendChild(card);
-
+      productsContainer.appendChild(card);
     });
-
   </script>
 
 </body>
