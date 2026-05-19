@@ -1,7 +1,118 @@
-<script>
-    // Matriz contendo exatamente 200 jogos reais: [Nome, Gênero, ID da Steam para a Capa]
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>XP Games Store</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="logo">
+      🎮 XP Games
+    </div>
+
+    <nav class="menu">
+      <a href="#">Início</a>
+      <a href="#">Jogos</a>
+      <a href="#">Lançamentos</a>
+      <a href="#">Promoções</a>
+      <a href="#">Contato</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <span class="badge">
+        🔥 Plataforma Gamer Premium
+      </span>
+
+      <h1>
+        O universo gamer<br>
+        com estilo Windows XP
+      </h1>
+
+      <p>
+        Descubra centenas de jogos para PC, Playstation e Xbox
+        em uma loja moderna com visual nostálgico.
+      </p>
+
+      <div class="buttons">
+
+        <button class="btn-primary">
+          Explorar Jogos
+        </button>
+
+        <button class="btn-secondary">
+          Ver Promoções
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+
+      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop">
+
+    </div>
+
+  </section>
+
+  <!-- TITULO -->
+
+  <section class="section-title">
+
+    <h2>
+      Jogos em Destaque
+    </h2>
+
+    <p>
+      Mais de 200 jogos disponíveis
+    </p>
+
+  </section>
+
+  <!-- PRODUTOS -->
+
+  <section class="products" id="products"></section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <h3>🎮 XP Games Store</h3>
+
+    <p>
+      © 2026 - Todos os direitos reservados
+    </p>
+
+  </footer>
+
+  <script>
+    // Matriz contendo EXATAMENTE 200 jogos reais: [Nome, Gênero, ID da Steam para a Capa]
     const gamesData = [
-      // RPG & Aventura Clássicos e Modernos
+      // Bloco 1: Grandes RPGs e Ação (1-20)
       ["Grand Theft Auto V", "AÇÃO", 271590],
       ["Cyberpunk 2077", "RPG", 1091500],
       ["Elden Ring", "RPG", 1245620],
@@ -22,8 +133,8 @@
       ["Mortal Kombat 1", "AÇÃO", 1971870],
       ["Tekken 8", "AÇÃO", 1778820],
       ["Doom Eternal", "FPS", 782330],
-      
-      // FPS e Shooters
+
+      // Bloco 2: Shooters e FPS Competitivos (21-40)
       ["Counter-Strike 2", "FPS", 730],
       ["Apex Legends", "FPS", 1172470],
       ["PUBG: BATTLEGROUNDS", "FPS", 578080],
@@ -44,29 +155,8 @@
       ["The Division 2", "AÇÃO", 2221490],
       ["Far Cry 5", "AÇÃO", 552520],
       ["Far Cry 6", "AÇÃO", 1874810],
-      
-      // Ação, Aventura e Mais FPS
-      ["Far Cry 4", "AÇÃO", 298110],
-      ["Borderlands 3", "FPS", 397540],
-      ["Borderlands 2", "FPS", 49520],
-      ["Tiny Tina's Wonderlands", "RPG", 1286680],
-      ["Payday 2", "AÇÃO", 218620],
-      ["Payday 3", "AÇÃO", 1272080],
-      ["Deep Rock Galactic", "FPS", 548430],
-      ["Warhammer 40,000: Darktide", "FPS", 1361210],
-      ["Helldivers 2", "AÇÃO", 553850],
-      ["Remnant: From the Ashes", "RPG", 617290],
-      ["Remnant 2", "RPG", 1282100],
-      ["Risk of Rain 2", "AÇÃO", 632360],
-      ["Roboquest", "FPS", 692890],
-      ["Gunfire Reborn", "FPS", 1178650],
-      ["Ready or Not", "FPS", 1144200],
-      ["Insurgency: Sandstorm", "FPS", 581320],
-      ["Squad", "FPS", 393380],
-      ["Hell Let Loose", "FPS", 686810],
-      ["Arma 3", "FPS", 107410],
-      
-      // Sobrevivência e Simulação
+
+      // Bloco 3: Sobrevivência, Co-op e Construção (41-60)
       ["ARK: Survival Evolved", "SANDBOX", 346110],
       ["ARK: Survival Ascended", "SANDBOX", 2378500],
       ["Valheim", "SANDBOX", 892970],
@@ -87,9 +177,9 @@
       ["Cities: Skylines", "SANDBOX", 255710],
       ["Cities: Skylines II", "SANDBOX", 949230],
       ["Euro Truck Simulator 2", "ONLINE", 227300],
+
+      // Bloco 4: Simulação, Estratégia e Tycoons (61-80)
       ["American Truck Simulator", "ONLINE", 270880],
-      
-      // Simulação e Estratégia
       ["Microsoft Flight Simulator", "AVENTURA", 1250410],
       ["The Sims 4", "SANDBOX", 1222670],
       ["RimWorld", "RPG", 294100],
@@ -106,11 +196,11 @@
       ["Age of Empires II: Definitive Edition", "AÇÃO", 813780],
       ["Age of Empires IV", "AÇÃO", 1466860],
       ["XCOM 2", "RPG", 268500],
-      
-      // RPGs Independentes e Metroidvanias
       ["Hades", "RPG", 1145360],
       ["Hades II", "RPG", 1145350],
       ["Hollow Knight", "AVENTURA", 367520],
+
+      // Bloco 5: Indies de Sucesso e Plataforma (81-100)
       ["Celeste", "AVENTURA", 504230],
       ["Cuphead", "AÇÃO", 268910],
       ["Dead Cells", "AÇÃO", 588650],
@@ -128,11 +218,11 @@
       ["Deltarune", "RPG", 1671210],
       ["Omori", "RPG", 1150690],
       ["Sea of Stars", "RPG", 1286580],
-      
-      // Esportes, Corrida e Luta
       ["Forza Horizon 4", "CORRIDA", 1293830],
       ["Need for Speed Heat", "CORRIDA", 1222680],
       ["Need for Speed Unbound", "CORRIDA", 1846380],
+
+      // Bloco 6: Automobilismo e Luta (101-120)
       ["Assetto Corsa", "CORRIDA", 244210],
       ["Assetto Corsa Competizione", "CORRIDA", 805550],
       ["F1 23", "CORRIDA", 2108330],
@@ -144,8 +234,6 @@
       ["NBA 2K24", "ONLINE", 2338770],
       ["Tony Hawk's Pro Skater 1+2", "AÇÃO", 2395210],
       ["Riders Republic", "CORRIDA", 1602080],
-      
-      // Terror, Cooperativos e Puzzles
       ["Resident Evil Village", "TERROR", 1196590],
       ["Resident Evil 7 Biohazard", "TERROR", 418370],
       ["Resident Evil 2", "TERROR", 883710],
@@ -155,6 +243,8 @@
       ["Phasmophobia", "TERROR", 739630],
       ["Lethal Company", "TERROR", 1966720],
       ["Among Us", "ONLINE", 945360],
+
+      // Bloco 7: Puzzles e Cooperativos Históricos (121-140)
       ["It Takes Two", "AVENTURA", 1426210],
       ["A Way Out", "AVENTURA", 1222700],
       ["Overcooked! All You Can Eat", "ONLINE", 1243830],
@@ -166,8 +256,6 @@
       ["Baba Is You", "AVENTURA", 736260],
       ["Limbo", "AVENTURA", 48000],
       ["Inside", "AVENTURA", 304430],
-      
-      // Hits Finais / Clássicos variados
       ["Little Nightmares", "TERROR", 424840],
       ["Little Nightmares II", "TERROR", 860510],
       ["Shovel Knight: Treasure Trove", "AÇÃO", 250760],
@@ -177,6 +265,8 @@
       ["Ghostrunner 2", "AÇÃO", 2144740],
       ["Stray", "AVENTURA", 1332010],
       ["Slime Rancher", "SANDBOX", 433340],
+
+      // Bloco 8: Clássicos Modernos e Grandes Mundos Abertos (141-160)
       ["Slime Rancher 2", "SANDBOX", 1657630],
       ["Untitled Goose Game", "AVENTURA", 1100600],
       ["Goat Simulator", "SANDBOX", 265930],
@@ -197,6 +287,8 @@
       ["Assassin's Creed Origins", "RPG", 582160],
       ["Persona 5 Royal", "RPG", 1687950],
       ["Final Fantasy VII Remake Intergrade", "RPG", 1462040],
+
+      // Bloco 9: RPGs Narrativos e Grandes Exclusivos de PC (161-180)
       ["Final Fantasy XV", "RPG", 637650],
       ["Dragon Age: Inquisition", "RPG", 1222690],
       ["Mass Effect Legendary Edition", "RPG", 1328670],
@@ -217,35 +309,46 @@
       ["Death Stranding Director's Cut", "AVENTURA", 1850570],
       ["Ghost of Tsushima Director's Cut", "AÇÃO", 2215430],
       ["Marvel's Spider-Man Remastered", "AÇÃO", 1817070],
-      ["Marvel's Spider-Man: Miles Morales", "AÇÃO", 1817190]
+
+      // Bloco 10: Mais sucessos do mundo dos games (181-200)
+      ["Marvel's Spider-Man: Miles Morales", "AÇÃO", 1817190],
+      ["Terraria: Journey's End", "SANDBOX", 105600],
+      ["Detroit: Become Human", "AVENTURA", 1222140],
+      ["Heavy Rain", "AVENTURA", 960910],
+      ["Beyond: Two Souls", "AVENTURA", 960990],
+      ["Deathloop", "FPS", 1252330],
+      ["Dishonored 2", "AÇÃO", 403640],
+      ["Dishonored", "AÇÃO", 205100],
+      ["Prey", "FPS", 480490],
+      ["The Evil Within 2", "TERROR", 601430],
+      ["The Evil Within", "TERROR", 268050],
+      ["Rage 2", "FPS", 548570],
+      ["Just Cause 4", "AÇÃO", 517630],
+      ["Just Cause 3", "AÇÃO", 225540],
+      ["Hitman 3", "AÇÃO", 1659040],
+      ["Sniper Elite 5", "AÇÃO", 1029690],
+      ["Sniper Elite 4", "AÇÃO", 312660],
+      ["Mafia: Definitive Edition", "AÇÃO", 1030840],
+      ["Mafia II: Definitive Edition", "AÇÃO", 1030830],
+      ["Kingdom Come: Deliverance", "RPG", 379430]
     ];
 
     const productsContainer = document.getElementById("products");
     const freeToPlayIds = [730, 1172470, 578080, 1085660, 230410, 440, 1222670];
 
-    // Imagens de fallback caso o navegador bloqueie a Steam localmente
-    const fallbackImages = [
-      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop"
-    ];
-
     gamesData.forEach(([gameName, genre, steamId], index) => {
       const card = document.createElement("div");
       card.classList.add("card");
 
-      // Rota atualizada e oficial da CDN da Steam
-      const imageUrl = `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${steamId}/header.jpg`;
-      const fallbackUrl = fallbackImages[index % fallbackImages.length];
+      // O truque do proxy (images.weserv.nl) para burlar o bloqueio de CORS local
+      const imageUrl = `https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`;
 
       const isFree = freeToPlayIds.includes(steamId);
       const priceText = isFree ? "Gratuito" : `R$ ${(59 + (index * 7) % 160)},90`;
 
-      // O truque está no 'onerror': se a imagem falhar, ele troca instantaneamente pelo fallback estável
       card.innerHTML = `
         <div class="card-image">
-          <img src="${imageUrl}" alt="${gameName}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}';">
+          <img src="${imageUrl}" alt="${gameName}" loading="lazy">
         </div>
 
         <div class="card-content">
@@ -269,3 +372,6 @@
       productsContainer.appendChild(card);
     });
   </script>
+
+</body>
+</html>
