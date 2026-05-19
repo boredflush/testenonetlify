@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XP Games - Promoções</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <input type="checkbox" id="checkout-toggle" class="css-hack-checkbox">
+  <div class="bg"></div>
+
+  <header class="header">
+    <div class="logo">🎮 XP Games</div>
+    <nav class="menu">
+      <a href="index.html" class="nav-btn">Início</a>
+      <a href="jogos.html" class="nav-btn">Jogos</a>
+      <a href="lancamentos.html" class="nav-btn">Lançamentos</a>
+      <a href="promocoes.html" class="nav-btn active">Promoções</a>
+      <a href="contato.html" class="nav-btn">Contato</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="section-title">
+      <h2>🔥 Ofertas Imperdíveis</h2>
+      <p>Preços super reduzidos por tempo limitado</p>
+    </section>
+    <section class="products">
+      <div class="card">
+        <div class="card-image"><img src="https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg" alt="The Witcher"></div>
+        <div class="card-content"><span class="tag">RPG</span><h3>The Witcher 3</h3>
+          <div class="card-bottom"><div class="price" style="color:red;"><span style="text-decoration:line-through; font-size:12px; color:#777;">R$ 129</span> R$ 29,90</div><label for="checkout-toggle" class="buy-btn">Comprar</label></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay">
+    <div class="xp-window">
+      <input type="radio" name="wizard-step" id="step-1" checked class="css-hack-radio">
+      <input type="radio" name="wizard-step" id="step-2" class="css-hack-radio">
+      <div class="xp-title-bar"><span>Assistente de Compra</span><label for="checkout-toggle" class="xp-close-btn">X</label></div>
+      <div class="xp-window-body">
+        <div class="wizard-step-box" id="box-step1">
+          <div class="wizard-header"><div><h2>Confirmar Pedido</h2><p>Selecione a forma de pagamento.</p></div><span>📦</span></div>
+          <div class="payment-methods" style="padding:15px 0;">
+            <label><input type="radio" name="pay" checked> Pix (Instantâneo)</label>
+            <label><input type="radio" name="pay"> Cartão de Crédito</label>
+          </div>
+          <div class="xp-divider"></div>
+          <div class="xp-dialog-buttons"><label for="checkout-toggle" class="xp-btn">Cancelar</label><label for="step-2" class="xp-btn primary">Avançar ></label></div>
+        </div>
+        <div class="wizard-step-box" id="box-step2">
+          <div class="wizard-header"><div><h2>Sucesso!</h2><p>Pedido registrado.</p></div><span>✅</span></div>
+          <p style="text-align:center; padding:15px 0; font-size:13px;">Sua licença digital foi enviada!</p>
+          <div class="xp-divider"></div>
+          <div class="xp-dialog-buttons"><label for="checkout-toggle" class="xp-btn primary">Concluir</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><h3>🎮 XP Games Store</h3><p>© 2026 - Todos os direitos reservados</p></footer>
+</body>
+</html>
