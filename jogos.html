@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XP Games - Catálogo</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <input type="checkbox" id="checkout-toggle" class="css-hack-checkbox">
+  <div class="bg"></div>
+
+  <header class="header">
+    <div class="logo">🎮 XP Games</div>
+    <nav class="menu">
+      <a href="index.html" class="nav-btn">Início</a>
+      <a href="jogos.html" class="nav-btn active">Jogos</a>
+      <a href="lancamentos.html" class="nav-btn">Lançamentos</a>
+      <a href="promocoes.html" class="nav-btn">Promoções</a>
+      <a href="contato.html" class="nav-btn">Contato</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="section-title">
+      <h2>Catálogo de Jogos</h2>
+      <p>Filtros instantâneos processados por CSS</p>
+    </section>
+
+    <div class="filter-system">
+      <input type="radio" name="genre-filter" id="filter-todos" checked class="css-hack-radio">
+      <input type="radio" name="genre-filter" id="filter-acao" class="css-hack-radio">
+      <input type="radio" name="genre-filter" id="filter-rpg" class="css-hack-radio">
+      <input type="radio" name="genre-filter" id="filter-corrida" class="css-hack-radio">
+
+      <div class="filter-buttons">
+        <label for="filter-todos" class="filter-btn btn-cat-todos">TODOS</label>
+        <label for="filter-acao" class="filter-btn btn-cat-acao">AÇÃO</label>
+        <label for="filter-rpg" class="filter-btn btn-cat-rpg">RPG</label>
+        <label for="filter-corrida" class="filter-btn btn-cat-corrida">CORRIDA</label>
+      </div>
+
+      <section class="products catalog-grid">
+        <div class="card item-acao">
+          <div class="card-image"><img src="https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg" alt="RDR2"></div>
+          <div class="card-content"><span class="tag">AÇÃO</span><h3>Red Dead Redemption 2</h3>
+            <div class="card-bottom"><div class="price">R$ 129,90</div><label for="checkout-toggle" class="buy-btn">Comprar</label></div>
+          </div>
+        </div>
+        <div class="card item-rpg">
+          <div class="card-image"><img src="https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg" alt="Elden Ring"></div>
+          <div class="card-content"><span class="tag">RPG</span><h3>Elden Ring</h3>
+            <div class="card-bottom"><div class="price">R$ 249,00</div><label for="checkout-toggle" class="buy-btn">Comprar</label></div>
+          </div>
+        </div>
+        <div class="card item-corrida">
+          <div class="card-image"><img src="https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg" alt="Forza 5"></div>
+          <div class="card-content"><span class="tag">CORRIDA</span><h3>Forza Horizon 5</h3>
+            <div class="card-bottom"><div class="price">R$ 189,00</div><label for="checkout-toggle" class="buy-btn">Comprar</label></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay">
+    <div class="xp-window">
+      <input type="radio" name="wizard-step" id="step-1" checked class="css-hack-radio">
+      <input type="radio" name="wizard-step" id="step-2" class="css-hack-radio">
+      <div class="xp-title-bar"><span>Assistente de Compra</span><label for="checkout-toggle" class="xp-close-btn">X</label></div>
+      <div class="xp-window-body">
+        <div class="wizard-step-box" id="box-step1">
+          <div class="wizard-header"><div><h2>Confirmar Pedido</h2><p>Selecione a forma de pagamento.</p></div><span>📦</span></div>
+          <div class="payment-methods" style="padding:15px 0;">
+            <label><input type="radio" name="pay" checked> Pix (Instantâneo)</label>
+            <label><input type="radio" name="pay"> Cartão de Crédito</label>
+          </div>
+          <div class="xp-divider"></div>
+          <div class="xp-dialog-buttons"><label for="checkout-toggle" class="xp-btn">Cancelar</label><label for="step-2" class="xp-btn primary">Avançar ></label></div>
+        </div>
+        <div class="wizard-step-box" id="box-step2">
+          <div class="wizard-header"><div><h2>Sucesso!</h2><p>Pedido registrado.</p></div><span>✅</span></div>
+          <p style="text-align:center; padding:15px 0; font-size:13px;">Sua licença digital foi enviada!</p>
+          <div class="xp-divider"></div>
+          <div class="xp-dialog-buttons"><label for="checkout-toggle" class="xp-btn primary">Concluir</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><h3>🎮 XP Games Store</h3><p>© 2026 - Todos os direitos reservados</p></footer>
+</body>
+</html>
