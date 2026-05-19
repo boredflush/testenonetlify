@@ -1,361 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>XP Games Store</title>
 
-  <!-- Fonte -->
+  <link rel="stylesheet" href="style.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:'Poppins', sans-serif;
-      background:#02152e;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    /* FUNDO */
-
-    .bg{
-      position:fixed;
-      width:100%;
-      height:100%;
-      background:
-        radial-gradient(circle at top, rgba(0,119,255,0.35), transparent 40%),
-        linear-gradient(to bottom, #0b4db8, #02152e);
-      z-index:-1;
-    }
-
-    /* HEADER */
-
-    .header{
-      width:100%;
-      padding:25px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      backdrop-filter:blur(12px);
-      background:rgba(0,0,0,0.2);
-      border-bottom:1px solid rgba(255,255,255,0.1);
-      z-index:100;
-    }
-
-    .logo{
-      font-size:32px;
-      font-weight:700;
-      color:white;
-    }
-
-    .menu{
-      display:flex;
-      gap:25px;
-    }
-
-    .menu a{
-      text-decoration:none;
-      color:white;
-      font-weight:500;
-      transition:0.3s;
-    }
-
-    .menu a:hover{
-      color:#5ab3ff;
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:90vh;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:60px 8%;
-      gap:60px;
-    }
-
-    .hero-text{
-      max-width:600px;
-    }
-
-    .badge{
-      display:inline-block;
-      background:rgba(90,179,255,0.15);
-      border:1px solid rgba(255,255,255,0.2);
-      padding:10px 18px;
-      border-radius:50px;
-      margin-bottom:25px;
-      color:#7cc5ff;
-    }
-
-    .hero-text h1{
-      font-size:68px;
-      line-height:1.1;
-      margin-bottom:25px;
-    }
-
-    .hero-text p{
-      color:#d0dfff;
-      line-height:1.7;
-      font-size:18px;
-      margin-bottom:35px;
-    }
-
-    .buttons{
-      display:flex;
-      gap:20px;
-    }
-
-    .btn-primary,
-    .btn-secondary{
-      padding:16px 28px;
-      border:none;
-      border-radius:14px;
-      font-size:16px;
-      font-weight:600;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .btn-primary{
-      background:linear-gradient(to right, #1e90ff, #5ab3ff);
-      color:white;
-      box-shadow:0 10px 25px rgba(0,119,255,0.4);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-4px);
-    }
-
-    .btn-secondary{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.2);
-      color:white;
-    }
-
-    .btn-secondary:hover{
-      background:rgba(255,255,255,0.08);
-    }
-
-    /* HERO IMAGE */
-
-    .hero-card{
-      width:450px;
-      border-radius:30px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.15);
-      box-shadow:0 20px 40px rgba(0,0,0,0.5);
-    }
-
-    .hero-card img{
-      width:100%;
-      display:block;
-    }
-
-    /* TITULO */
-
-    .section-title{
-      text-align:center;
-      margin-bottom:50px;
-    }
-
-    .section-title h2{
-      font-size:48px;
-      margin-bottom:10px;
-    }
-
-    .section-title p{
-      color:#b6ccff;
-    }
-
-    /* PRODUTOS */
-
-    .products{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
-      gap:35px;
-      padding:0 8% 100px;
-    }
-
-    .card{
-      background:rgba(255,255,255,0.07);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:24px;
-      overflow:hidden;
-      backdrop-filter:blur(15px);
-      transition:0.4s;
-      position:relative;
-    }
-
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        180deg,
-        transparent,
-        rgba(255,255,255,0.03)
-      );
-      pointer-events:none;
-    }
-
-    .card:hover{
-      transform:translateY(-12px) scale(1.02);
-      box-shadow:0 25px 45px rgba(0,0,0,0.45);
-    }
-
-    .card-image{
-      overflow:hidden;
-    }
-
-    .card-image img{
-      width:100%;
-      height:230px;
-      object-fit:cover;
-      transition:0.5s;
-    }
-
-    .card:hover .card-image img{
-      transform:scale(1.08);
-    }
-
-    .card-content{
-      padding:25px;
-    }
-
-    .tag{
-      background:linear-gradient(to right, #1e90ff, #5ab3ff);
-      padding:7px 16px;
-      border-radius:30px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:1px;
-    }
-
-    .card-content h3{
-      margin-top:18px;
-      font-size:28px;
-    }
-
-    .card-content p{
-      margin:15px 0 25px;
-      color:#d5e3ff;
-      line-height:1.7;
-    }
-
-    .card-bottom{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .price{
-      font-size:26px;
-      font-weight:700;
-      color:#7cc5ff;
-    }
-
-    .card-bottom button{
-      background:linear-gradient(to right, #1e90ff, #5ab3ff);
-      border:none;
-      color:white;
-      padding:12px 22px;
-      border-radius:12px;
-      cursor:pointer;
-      font-weight:600;
-      transition:0.3s;
-    }
-
-    .card-bottom button:hover{
-      opacity:0.9;
-      transform:scale(1.05);
-    }
-
-    /* FOOTER */
-
-    .footer{
-      text-align:center;
-      padding:50px 20px;
-      border-top:1px solid rgba(255,255,255,0.1);
-      background:rgba(0,0,0,0.2);
-    }
-
-    .footer h3{
-      margin-bottom:10px;
-      font-size:28px;
-    }
-
-    .footer p{
-      color:#b6ccff;
-    }
-
-    /* RESPONSIVO */
-
-    @media(max-width:1000px){
-
-      .hero{
-        flex-direction:column;
-        text-align:center;
-      }
-
-      .buttons{
-        justify-content:center;
-        flex-wrap:wrap;
-      }
-
-      .hero-card{
-        width:100%;
-        max-width:500px;
-      }
-
-      .hero-text h1{
-        font-size:50px;
-      }
-
-    }
-
-    @media(max-width:700px){
-
-      .header{
-        flex-direction:column;
-        gap:20px;
-      }
-
-      .menu{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
-
-      .hero-text h1{
-        font-size:38px;
-      }
-
-      .section-title h2{
-        font-size:36px;
-      }
-
-    }
-
-  </style>
 </head>
 
 <body>
-
-  <!-- FUNDO -->
 
   <div class="bg"></div>
 
@@ -364,7 +24,7 @@
   <header class="header">
 
     <div class="logo">
-      XP Games
+      🎮 XP Games
     </div>
 
     <nav class="menu">
@@ -393,8 +53,8 @@
       </h1>
 
       <p>
-        Visual nostálgico, interface moderna e os melhores jogos
-        para PC, Playstation e Xbox.
+        Descubra centenas de jogos para PC, Playstation e Xbox
+        em uma loja moderna com visual nostálgico.
       </p>
 
       <div class="buttons">
@@ -428,220 +88,14 @@
     </h2>
 
     <p>
-      Os títulos mais jogados da semana
+      Mais de 200 jogos disponíveis
     </p>
 
   </section>
 
   <!-- PRODUTOS -->
 
-  <section class="products">
-
-    <!-- GTA V -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">AÇÃO</span>
-
-        <h3>Grand Theft Auto V</h3>
-
-        <p>
-          Explore Los Santos em um dos jogos mais famosos do mundo.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 79,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- MINECRAFT -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">SANDBOX</span>
-
-        <h3>Minecraft</h3>
-
-        <p>
-          Crie mundos incríveis e sobreviva em aventuras infinitas.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 99,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- FIFA -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">ESPORTE</span>
-
-        <h3>EA Sports FC 26</h3>
-
-        <p>
-          O simulador de futebol mais jogado da atualidade.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 299,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- COD -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">FPS</span>
-
-        <h3>Call of Duty</h3>
-
-        <p>
-          Combates intensos e gráficos cinematográficos online.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 249,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- RED DEAD -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">AVENTURA</span>
-
-        <h3>Red Dead Redemption 2</h3>
-
-        <p>
-          Viva o velho oeste em uma história épica e emocionante.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 129,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ELDEN RING -->
-
-    <div class="card">
-
-      <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop">
-      </div>
-
-      <div class="card-content">
-
-        <span class="tag">RPG</span>
-
-        <h3>Elden Ring</h3>
-
-        <p>
-          Enfrente criaturas sombrias em um universo de fantasia brutal.
-        </p>
-
-        <div class="card-bottom">
-
-          <div class="price">
-            R$ 199,90
-          </div>
-
-          <button>
-            Comprar
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+  <section class="products" id="products"></section>
 
   <!-- FOOTER -->
 
@@ -654,6 +108,130 @@
     </p>
 
   </footer>
+
+  <script>
+
+    const games = [
+
+      "Grand Theft Auto V",
+      "Minecraft",
+      "Elden Ring",
+      "Cyberpunk 2077",
+      "The Witcher 3",
+      "Red Dead Redemption 2",
+      "Resident Evil 4",
+      "EA Sports FC 26",
+      "Call of Duty",
+      "Fortnite",
+      "Valorant",
+      "Counter Strike 2",
+      "League of Legends",
+      "Dota 2",
+      "God of War Ragnarök",
+      "Spider-Man 2",
+      "The Last of Us",
+      "Forza Horizon 5",
+      "Need for Speed Heat",
+      "Halo Infinite",
+      "Battlefield 2042",
+      "Rainbow Six Siege",
+      "Assassin's Creed Mirage",
+      "Far Cry 6",
+      "Mortal Kombat 1",
+      "Tekken 8",
+      "Street Fighter 6",
+      "Dark Souls 3",
+      "Sekiro",
+      "Bloodborne",
+      "Hades",
+      "Celeste",
+      "Cuphead",
+      "Hollow Knight",
+      "Terraria",
+      "Roblox",
+      "Among Us",
+      "PUBG",
+      "Apex Legends",
+      "Dead by Daylight"
+
+    ];
+
+    for(let i = 1; i <= 170; i++){
+      games.push("XP Game " + i);
+    }
+
+    const genres = [
+      "AÇÃO",
+      "RPG",
+      "FPS",
+      "AVENTURA",
+      "CORRIDA",
+      "TERROR",
+      "ONLINE",
+      "SANDBOX"
+    ];
+
+    const images = [
+
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+
+      "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop",
+
+      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop",
+
+      "https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop",
+
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1200&auto=format&fit=crop"
+
+    ];
+
+    const products = document.getElementById("products");
+
+    games.forEach((game, index) => {
+
+      const card = document.createElement("div");
+
+      card.classList.add("card");
+
+      card.innerHTML = `
+
+        <div class="card-image">
+          <img src="${images[index % images.length]}">
+        </div>
+
+        <div class="card-content">
+
+          <span class="tag">
+            ${genres[index % genres.length]}
+          </span>
+
+          <h3>${game}</h3>
+
+          <p>
+            Um dos jogos mais populares da XP Games Store.
+          </p>
+
+          <div class="card-bottom">
+
+            <div class="price">
+              R$ ${59 + index},90
+            </div>
+
+            <button>
+              Comprar
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+      products.appendChild(card);
+
+    });
+
+  </script>
 
 </body>
 </html>
