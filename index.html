@@ -1,115 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>XP Games Store</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-  <div class="bg"></div>
-
-  <!-- HEADER -->
-
-  <header class="header">
-
-    <div class="logo">
-      🎮 XP Games
-    </div>
-
-    <nav class="menu">
-      <a href="#">Início</a>
-      <a href="#">Jogos</a>
-      <a href="#">Lançamentos</a>
-      <a href="#">Promoções</a>
-      <a href="#">Contato</a>
-    </nav>
-
-  </header>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-text">
-
-      <span class="badge">
-        🔥 Plataforma Gamer Premium
-      </span>
-
-      <h1>
-        O universo gamer<br>
-        com estilo Windows XP
-      </h1>
-
-      <p>
-        Descubra centenas de jogos para PC, Playstation e Xbox
-        em uma loja moderna com visual nostálgico.
-      </p>
-
-      <div class="buttons">
-
-        <button class="btn-primary">
-          Explorar Jogos
-        </button>
-
-        <button class="btn-secondary">
-          Ver Promoções
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="hero-card">
-
-      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop">
-
-    </div>
-
-  </section>
-
-  <!-- TITULO -->
-
-  <section class="section-title">
-
-    <h2>
-      Jogos em Destaque
-    </h2>
-
-    <p>
-      Mais de 200 jogos disponíveis
-    </p>
-
-  </section>
-
-  <!-- PRODUTOS -->
-
-  <section class="products" id="products"></section>
-
-  <!-- FOOTER -->
-
-  <footer class="footer">
-
-    <h3>🎮 XP Games Store</h3>
-
-    <p>
-      © 2026 - Todos os direitos reservados
-    </p>
-
-  </footer>
-
-  <script>
+<script>
     // Matriz contendo exatamente 200 jogos reais: [Nome, Gênero, ID da Steam para a Capa]
     const gamesData = [
       // RPG & Aventura Clássicos e Modernos
@@ -278,7 +167,7 @@
       ["Limbo", "AVENTURA", 48000],
       ["Inside", "AVENTURA", 304430],
       
-      // Hits Finais / Clássicos variados para fechar 200 itens
+      // Hits Finais / Clássicos variados
       ["Little Nightmares", "TERROR", 424840],
       ["Little Nightmares II", "TERROR", 860510],
       ["Shovel Knight: Treasure Trove", "AÇÃO", 250760],
@@ -332,24 +221,31 @@
     ];
 
     const productsContainer = document.getElementById("products");
-
-    // Lista de IDs conhecidos por serem Free-to-Play
     const freeToPlayIds = [730, 1172470, 578080, 1085660, 230410, 440, 1222670];
+
+    // Imagens de fallback caso o navegador bloqueie a Steam localmente
+    const fallbackImages = [
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop"
+    ];
 
     gamesData.forEach(([gameName, genre, steamId], index) => {
       const card = document.createElement("div");
       card.classList.add("card");
 
-      // URL Oficial da capa/banner da Steam para o ID do jogo
-      const imageUrl = `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`;
+      // Rota atualizada e oficial da CDN da Steam
+      const imageUrl = `https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/${steamId}/header.jpg`;
+      const fallbackUrl = fallbackImages[index % fallbackImages.length];
 
-      // Define preço realista baseado no ID ou gera um dinamicamente
       const isFree = freeToPlayIds.includes(steamId);
       const priceText = isFree ? "Gratuito" : `R$ ${(59 + (index * 7) % 160)},90`;
 
+      // O truque está no 'onerror': se a imagem falhar, ele troca instantaneamente pelo fallback estável
       card.innerHTML = `
         <div class="card-image">
-          <img src="${imageUrl}" alt="${gameName}" loading="lazy">
+          <img src="${imageUrl}" alt="${gameName}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}';">
         </div>
 
         <div class="card-content">
@@ -373,6 +269,3 @@
       productsContainer.appendChild(card);
     });
   </script>
-
-</body>
-</html>
