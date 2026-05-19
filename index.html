@@ -13,6 +13,173 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilos da Janela de Compra Estilo Windows XP */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .xp-window {
+      background: #ECE9D8;
+      width: 500px;
+      border: 3px solid #0054E3;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+      font-family: 'Tahoma', 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .xp-title-bar {
+      background: linear-gradient(to bottom, #0058E6 0%, #3A82FF 8%, #0054E3 25%, #0046D5 65%, #002CD1 100%);
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px #001270;
+      font-size: 13px;
+    }
+
+    .xp-close-btn {
+      background: linear-gradient(to bottom, #E76243 0%, #E9431C 30%, #CC2A04 70%, #9E1F02 100%);
+      border: 1px solid #7B1300;
+      color: white;
+      font-weight: bold;
+      width: 21px;
+      height: 21px;
+      border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 11px;
+      box-shadow: inset 1px 1px 1px rgba(255,255,255,0.4);
+    }
+
+    .xp-close-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .xp-window-body {
+      padding: 15px;
+      color: #000;
+    }
+
+    /* Conteúdo interno do assistente */
+    .wizard-header {
+      background: white;
+      margin: -15px -15px 15px -15px;
+      padding: 15px;
+      border-bottom: 1px solid #B2B2B2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wizard-header h2 {
+      font-size: 16px;
+      margin: 0;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .wizard-header p {
+      font-size: 11px;
+      margin: 5px 0 0 0;
+      color: #555;
+    }
+
+    .game-checkout-info {
+      display: flex;
+      gap: 15px;
+      background: #F1EFE2;
+      padding: 12px;
+      border: 1px dashed #999;
+      margin-bottom: 15px;
+    }
+
+    .game-checkout-info img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+      border: 1px solid #7F9DB9;
+    }
+
+    .game-checkout-details h3 {
+      margin: 0 0 5px 0;
+      font-size: 15px;
+    }
+
+    .game-checkout-details .price-tag {
+      font-size: 18px;
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .payment-methods {
+      margin-top: 10px;
+    }
+
+    .payment-methods label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .xp-divider {
+      height: 2px;
+      background: #D6D3CE;
+      border-bottom: 1px solid #FFF;
+      margin: 15px 0;
+    }
+
+    .xp-dialog-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .xp-btn {
+      background: linear-gradient(to bottom, #FFF 0%, #F4F2E8 40%, #E3DFCE 70%, #D6D3CE 100%);
+      border: 1px solid #7F9DB9;
+      color: #000;
+      padding: 5px 18px;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    }
+
+    .xp-btn:hover {
+      border-color: #0A246A;
+      background: linear-gradient(to bottom, #FFF 0%, #EBF3FF 40%, #C3DAF9 70%, #AECDF6 100%);
+    }
+
+    .xp-btn.primary {
+      font-weight: bold;
+      border-color: #0054E3;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,13 +187,8 @@
   <div class="bg"></div>
 
   <!-- HEADER -->
-
   <header class="header">
-
-    <div class="logo">
-      🎮 XP Games
-    </div>
-
+    <div class="logo">🎮 XP Games</div>
     <nav class="menu">
       <a href="#">Início</a>
       <a href="#">Jogos</a>
@@ -34,85 +196,87 @@
       <a href="#">Promoções</a>
       <a href="#">Contato</a>
     </nav>
-
   </header>
 
   <!-- HERO -->
-
   <section class="hero">
-
     <div class="hero-text">
-
-      <span class="badge">
-        🔥 Plataforma Gamer Premium
-      </span>
-
-      <h1>
-        O universo gamer<br>
-        com estilo Windows XP
-      </h1>
-
-      <p>
-        Descubra centenas de jogos para PC, Playstation e Xbox
-        em uma loja moderna com visual nostálgico.
-      </p>
-
+      <span class="badge">🔥 Plataforma Gamer Premium</span>
+      <h1>O universo gamer<br>com estilo Windows XP</h1>
+      <p>Descubra centenas de jogos para PC, Playstation e Xbox em uma loja moderna com visual nostálgico.</p>
       <div class="buttons">
-
-        <button class="btn-primary">
-          Explorar Jogos
-        </button>
-
-        <button class="btn-secondary">
-          Ver Promoções
-        </button>
-
+        <button class="btn-primary">Explorar Jogos</button>
+        <button class="btn-secondary">Ver Promoções</button>
       </div>
-
     </div>
-
     <div class="hero-card">
-
       <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1200&auto=format&fit=crop">
-
     </div>
-
   </section>
 
   <!-- TITULO -->
-
   <section class="section-title">
-
-    <h2>
-      Jogos em Destaque
-    </h2>
-
-    <p>
-      Mais de 200 jogos disponíveis
-    </p>
-
+    <h2>Jogos em Destaque</h2>
+    <p>Mais de 200 jogos disponíveis</p>
   </section>
 
   <!-- PRODUTOS -->
-
   <section class="products" id="products"></section>
 
   <!-- FOOTER -->
-
   <footer class="footer">
-
     <h3>🎮 XP Games Store</h3>
-
-    <p>
-      © 2026 - Todos os direitos reservados
-    </p>
-
+    <p>© 2026 - Todos os direitos reservados</p>
   </footer>
 
+  <!-- JANELA DE COMPRA (MODAL WINDOWS XP) -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="xp-window">
+      <div class="xp-title-bar">
+        <span>Assistente de Compra - XP Games</span>
+        <button class="xp-close-btn" onclick="closeCheckout()">X</button>
+      </div>
+      <div class="xp-window-body">
+        
+        <div class="wizard-header">
+          <div>
+            <h2 id="wizardTitle">Confirmar Pedido</h2>
+            <p id="wizardSubtitle">Selecione a forma de pagamento para concluir a ativação.</p>
+          </div>
+          <span style="font-size: 24px;">📦</span>
+        </div>
+
+        <div class="game-checkout-info">
+          <img id="checkoutGameImg" src="" alt="Capa do Jogo">
+          <div class="game-checkout-details">
+            <h3 id="checkoutGameName">Nome do Jogo</h3>
+            <div class="price-tag" id="checkoutGamePrice">R$ 0,00</div>
+          </div>
+        </div>
+
+        <div id="wizardStepContent">
+          <p style="font-size: 12px; margin-bottom: 10px; font-weight: bold;">Escolha o método de pagamento:</p>
+          <div class="payment-methods">
+            <label><input type="radio" name="payment" checked> Pix (Aprovação Instantânea)</label>
+            <label><input type="radio" name="payment"> Cartão de Crédito (Até 12x)</label>
+            <label><input type="radio" name="payment"> Boleto Bancário (Até 2 dias úteis)</label>
+          </div>
+        </div>
+
+        <div class="xp-divider"></div>
+
+        <div class="xp-dialog-buttons">
+          <button class="xp-btn" onclick="closeCheckout()" id="btnCancel">Cancelar</button>
+          <button class="xp-btn primary" onclick="nextStep()" id="btnNext">Avançar ></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Matriz contendo EXATAMENTE 200 jogos reais: [Nome, Gênero, ID da Steam para a Capa]
+    // Matriz contendo EXATAMENTE 200 jogos reais
     const gamesData = [
-      // Bloco 1: Grandes RPGs e Ação (1-20)
       ["Grand Theft Auto V", "AÇÃO", 271590],
       ["Cyberpunk 2077", "RPG", 1091500],
       ["Elden Ring", "RPG", 1245620],
@@ -133,8 +297,6 @@
       ["Mortal Kombat 1", "AÇÃO", 1971870],
       ["Tekken 8", "AÇÃO", 1778820],
       ["Doom Eternal", "FPS", 782330],
-
-      // Bloco 2: Shooters e FPS Competitivos (21-40)
       ["Counter-Strike 2", "FPS", 730],
       ["Apex Legends", "FPS", 1172470],
       ["PUBG: BATTLEGROUNDS", "FPS", 578080],
@@ -155,8 +317,6 @@
       ["The Division 2", "AÇÃO", 2221490],
       ["Far Cry 5", "AÇÃO", 552520],
       ["Far Cry 6", "AÇÃO", 1874810],
-
-      // Bloco 3: Sobrevivência, Co-op e Construção (41-60)
       ["ARK: Survival Evolved", "SANDBOX", 346110],
       ["ARK: Survival Ascended", "SANDBOX", 2378500],
       ["Valheim", "SANDBOX", 892970],
@@ -177,8 +337,6 @@
       ["Cities: Skylines", "SANDBOX", 255710],
       ["Cities: Skylines II", "SANDBOX", 949230],
       ["Euro Truck Simulator 2", "ONLINE", 227300],
-
-      // Bloco 4: Simulação, Estratégia e Tycoons (61-80)
       ["American Truck Simulator", "ONLINE", 270880],
       ["Microsoft Flight Simulator", "AVENTURA", 1250410],
       ["The Sims 4", "SANDBOX", 1222670],
@@ -199,8 +357,6 @@
       ["Hades", "RPG", 1145360],
       ["Hades II", "RPG", 1145350],
       ["Hollow Knight", "AVENTURA", 367520],
-
-      // Bloco 5: Indies de Sucesso e Plataforma (81-100)
       ["Celeste", "AVENTURA", 504230],
       ["Cuphead", "AÇÃO", 268910],
       ["Dead Cells", "AÇÃO", 588650],
@@ -221,8 +377,6 @@
       ["Forza Horizon 4", "CORRIDA", 1293830],
       ["Need for Speed Heat", "CORRIDA", 1222680],
       ["Need for Speed Unbound", "CORRIDA", 1846380],
-
-      // Bloco 6: Automobilismo e Luta (101-120)
       ["Assetto Corsa", "CORRIDA", 244210],
       ["Assetto Corsa Competizione", "CORRIDA", 805550],
       ["F1 23", "CORRIDA", 2108330],
@@ -243,8 +397,6 @@
       ["Phasmophobia", "TERROR", 739630],
       ["Lethal Company", "TERROR", 1966720],
       ["Among Us", "ONLINE", 945360],
-
-      // Bloco 7: Puzzles e Cooperativos Históricos (121-140)
       ["It Takes Two", "AVENTURA", 1426210],
       ["A Way Out", "AVENTURA", 1222700],
       ["Overcooked! All You Can Eat", "ONLINE", 1243830],
@@ -265,8 +417,6 @@
       ["Ghostrunner 2", "AÇÃO", 2144740],
       ["Stray", "AVENTURA", 1332010],
       ["Slime Rancher", "SANDBOX", 433340],
-
-      // Bloco 8: Clássicos Modernos e Grandes Mundos Abertos (141-160)
       ["Slime Rancher 2", "SANDBOX", 1657630],
       ["Untitled Goose Game", "AVENTURA", 1100600],
       ["Goat Simulator", "SANDBOX", 265930],
@@ -287,8 +437,6 @@
       ["Assassin's Creed Origins", "RPG", 582160],
       ["Persona 5 Royal", "RPG", 1687950],
       ["Final Fantasy VII Remake Intergrade", "RPG", 1462040],
-
-      // Bloco 9: RPGs Narrativos e Grandes Exclusivos de PC (161-180)
       ["Final Fantasy XV", "RPG", 637650],
       ["Dragon Age: Inquisition", "RPG", 1222690],
       ["Mass Effect Legendary Edition", "RPG", 1328670],
@@ -309,8 +457,6 @@
       ["Death Stranding Director's Cut", "AVENTURA", 1850570],
       ["Ghost of Tsushima Director's Cut", "AÇÃO", 2215430],
       ["Marvel's Spider-Man Remastered", "AÇÃO", 1817070],
-
-      // Bloco 10: Mais sucessos do mundo dos games (181-200)
       ["Marvel's Spider-Man: Miles Morales", "AÇÃO", 1817190],
       ["Terraria: Journey's End", "SANDBOX", 105600],
       ["Detroit: Become Human", "AVENTURA", 1222140],
@@ -335,16 +481,16 @@
 
     const productsContainer = document.getElementById("products");
     const freeToPlayIds = [730, 1172470, 578080, 1085660, 230410, 440, 1222670];
+    let currentStep = 1;
 
     gamesData.forEach(([gameName, genre, steamId], index) => {
       const card = document.createElement("div");
       card.classList.add("card");
 
-      // O truque do proxy (images.weserv.nl) para burlar o bloqueio de CORS local
       const imageUrl = `https://images.weserv.nl/?url=cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`;
-
       const isFree = freeToPlayIds.includes(steamId);
       const priceText = isFree ? "Gratuito" : `R$ ${(59 + (index * 7) % 160)},90`;
+      const buttonLabel = isFree ? "Jogar" : "Comprar";
 
       card.innerHTML = `
         <div class="card-image">
@@ -354,16 +500,13 @@
         <div class="card-content">
           <span class="tag">${genre}</span>
           <h3>${gameName}</h3>
-          <p>
-            Um dos jogos mais populares e aclamados disponível na XP Games Store.
-          </p>
+          <p>Um dos jogos mais populares e aclamados disponível na XP Games Store.</p>
 
           <div class="card-bottom">
-            <div class="price">
-              ${priceText}
-            </div>
-            <button>
-              ${isFree ? "Jogar" : "Comprar"}
+            <div class="price">${priceText}</div>
+            <!-- Evento de clique modificado para acionar a janela XP -->
+            <button onclick="openCheckout('${gameName.replace(/'/g, "\\'")}', '${priceText}', '${imageUrl}')">
+              ${buttonLabel}
             </button>
           </div>
         </div>
@@ -371,6 +514,56 @@
 
       productsContainer.appendChild(card);
     });
+
+    // Funções de Controle do Assistente de Compra
+    function openCheckout(name, price, imgUrl) {
+      currentStep = 1;
+      document.getElementById("checkoutGameName").innerText = name;
+      document.getElementById("checkoutGamePrice").innerText = price;
+      document.getElementById("checkoutGameImg").src = imgUrl;
+      
+      // Reseta visual padrão do primeiro passo
+      document.getElementById("wizardTitle").innerText = "Confirmar Pedido";
+      document.getElementById("wizardSubtitle").innerText = "Selecione a forma de pagamento para concluir a ativação.";
+      document.getElementById("wizardStepContent").innerHTML = `
+        <p style="font-size: 12px; margin-bottom: 10px; font-weight: bold;">Escolha o método de pagamento:</p>
+        <div class="payment-methods">
+          <label><input type="radio" name="payment" checked> Pix (Aprovação Instantânea)</label>
+          <label><input type="radio" name="payment"> Cartão de Crédito (Até 12x)</label>
+          <label><input type="radio" name="payment"> Boleto Bancário (Até 2 dias úteis)</label>
+        </div>
+      `;
+      document.getElementById("btnNext").innerText = "Avançar >";
+      document.getElementById("btnCancel").style.display = "inline-block";
+
+      document.getElementById("checkoutModal").classList.add("active");
+    }
+
+    function closeCheckout() {
+      document.getElementById("checkoutModal").classList.remove("active");
+    }
+
+    function nextStep() {
+      if (currentStep === 1) {
+        // Vai para a tela de Sucesso/Conclusão
+        currentStep = 2;
+        document.getElementById("wizardTitle").innerText = "Processando Ativação";
+        document.getElementById("wizardSubtitle").innerText = "Seu pedido foi registrado com absoluto sucesso!";
+        
+        document.getElementById("wizardStepContent").innerHTML = `
+          <div style="text-align: center; padding: 10px 0;">
+            <p style="font-size: 14px; font-weight: bold; color: #0046D5; margin-bottom: 10px;">¡Muito obrigado pela compra!</p>
+            <p style="font-size: 12px; color: #333;">O jogo já foi adicionado à sua biblioteca digital XP Cloud. O instalador começará a baixar automaticamente em segundo plano.</p>
+            <div style="margin-top: 15px; font-size: 11px; color: #666; font-style: italic;">Chave do produto gerada com sucesso.</div>
+          </div>
+        `;
+        document.getElementById("btnNext").innerText = "Concluir";
+        document.getElementById("btnCancel").style.display = "none"; // Oculta cancelar na última tela
+      } else {
+        // Se já estava no passo 2, fecha o assistente
+        closeCheckout();
+      }
+    }
   </script>
 
 </body>
